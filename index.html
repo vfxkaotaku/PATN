@@ -147,7 +147,6 @@
                 <div class="h-[1px] w-4 md:w-8 bg-[#D4AF37]/40"></div>
             </div>
             
-            <!-- Spacing Reduced between lines -->
             <h1 class="font-black mb-8 uppercase italic flare-container">
                 <span class="text-sm md:text-2xl tracking-[0.4em] block text-white opacity-70 mb-0.5">PRESENT AROUND</span>
                 <span class="text-4xl sm:text-6xl md:text-8xl lg:text-[9.5rem] tracking-tighter leading-[0.8] gold-gradient block whitespace-nowrap">THE NETWORK</span>
@@ -278,13 +277,13 @@
     <script>
         lucide.createIcons();
 
-        // Loading Screen Handler
+        // Loading Screen Handler - Set to 3 seconds
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
             setTimeout(() => {
                 loader.style.opacity = '0';
                 setTimeout(() => loader.style.display = 'none', 800);
-            }, 1000);
+            }, 3000); // 3-second delay
         });
 
         // Config
