@@ -17,13 +17,24 @@
             position: relative;
         }
 
-        /* Ambient Background Grid */
+        /* --- LOADING SCREEN ANIMATION --- */
+        #loader {
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes loading-bar {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(400%); }
+        }
+
+        .loading-progress {
+            animation: loading-bar 1.5s infinite ease-in-out;
+        }
+
+        /* --- BACKGROUND ANIMATIONS --- */
         .bg-grid-animate {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 200%;
-            height: 200%;
+            top: 0; left: 0; width: 200%; height: 200%;
             background-image: 
                 linear-gradient(to right, rgba(212, 175, 55, 0.04) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(212, 175, 55, 0.04) 1px, transparent 1px);
@@ -37,22 +48,29 @@
             100% { transform: translate(-50px, -50px); }
         }
 
-        .floating-blob {
-            position: fixed;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
-            filter: blur(80px);
-            border-radius: 50%;
-            z-index: -1;
-            animation: float 20s infinite alternate ease-in-out;
+        /* --- TITLE FLARE EFFECT --- */
+        .flare-container {
+            position: relative;
+            overflow: hidden;
         }
 
-        @keyframes float {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(10vw, 10vh); }
+        .flare-container::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -150%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transform: skewX(-25deg);
+            animation: flare 6s infinite ease-in-out;
         }
 
+        @keyframes flare {
+            0%, 50% { left: -150%; }
+            80% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        /* --- THEME DESIGN --- */
         .gold-gradient {
             background: linear-gradient(135deg, #D4AF37 0%, #F1D37E 50%, #B8860B 100%);
             -webkit-background-clip: text;
@@ -68,7 +86,6 @@
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(212, 175, 55, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .input-field {
@@ -92,18 +109,28 @@
         }
 
         html { scroll-behavior: smooth; }
-
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }
     </style>
 </head>
 <body class="min-h-screen selection:bg-[#D4AF37]/30">
 
-    <div class="bg-grid-animate"></div>
-    <div class="floating-blob" style="top: -100px; left: -100px;"></div>
-    <div class="floating-blob" style="bottom: -100px; right: -100px; animation-delay: -5s;"></div>
+    <!-- Loading Screen -->
+    <div id="loader" class="fixed inset-0 z-[100] bg-[#080808] flex flex-col items-center justify-center">
+        <div class="relative mb-8">
+            <img src="logo.png" alt="EESA" class="w-32 h-32 md:w-44 md:h-44 object-contain animate-pulse">
+            <div class="absolute inset-0 bg-yellow-500/10 blur-3xl rounded-full"></div>
+        </div>
+        <div class="w-48 h-[2px] bg-white/5 rounded-full overflow-hidden relative">
+            <div class="absolute top-0 left-0 h-full w-24 gold-bg loading-progress"></div>
+        </div>
+        <p class="mt-4 text-[10px] tracking-[0.4em] font-black text-white/40 uppercase">Initializing Network</p>
+    </div>
 
-    <!-- Header -->
+    <!-- Ambient background -->
+    <div class="bg-grid-animate"></div>
+
+    <!-- Header Section -->
     <header class="pt-8 pb-16 px-6 relative z-10">
         <div class="max-w-6xl mx-auto flex justify-end items-center mb-16">
             <a href="https://instagram.com/eesa_kbtcoe" target="_blank" 
@@ -116,16 +143,17 @@
         <div class="text-center max-w-6xl mx-auto px-4">
             <div class="inline-flex items-center gap-3 mb-6">
                 <div class="h-[1px] w-4 md:w-8 bg-[#D4AF37]/40"></div>
-                <p class="text-[8px] md:text-[10px] text-[#D4AF37] font-black tracking-[0.5em] uppercase opacity-90">Presented By EESA</p>
+                <p class="text-[8px] md:text-[9px] text-[#D4AF37] font-black tracking-[0.6em] uppercase opacity-90">Presented By EESA</p>
                 <div class="h-[1px] w-4 md:w-8 bg-[#D4AF37]/40"></div>
             </div>
             
-            <h1 class="font-black mb-8 uppercase italic">
-                <span class="text-base md:text-3xl tracking-[0.4em] block text-white opacity-70 mb-3">PRESENT AROUND</span>
-                <span class="text-4xl sm:text-6xl md:text-8xl lg:text-[9rem] tracking-tighter leading-none gold-gradient block whitespace-nowrap">THE NETWORK</span>
+            <!-- Spacing Reduced between lines -->
+            <h1 class="font-black mb-8 uppercase italic flare-container">
+                <span class="text-sm md:text-2xl tracking-[0.4em] block text-white opacity-70 mb-0.5">PRESENT AROUND</span>
+                <span class="text-4xl sm:text-6xl md:text-8xl lg:text-[9.5rem] tracking-tighter leading-[0.8] gold-gradient block whitespace-nowrap">THE NETWORK</span>
             </h1>
             
-            <div class="w-24 md:w-32 h-1.5 gold-bg mx-auto mb-8 rounded-full shadow-[0_0_25px_rgba(212,175,55,0.6)] animate-pulse"></div>
+            <div class="w-24 md:w-32 h-1.5 gold-bg mx-auto mb-8 rounded-full shadow-[0_0_25px_rgba(212,175,55,0.6)]"></div>
             <p class="text-gray-400 max-w-2xl mx-auto text-xs sm:text-sm md:text-xl font-semibold px-4 tracking-[0.1em] uppercase leading-relaxed opacity-90">
                 Institute Level Presentation Competition
             </p>
@@ -155,7 +183,6 @@
     <main class="max-w-6xl mx-auto py-12 md:py-24 px-4 sm:px-6 relative z-10">
         <div id="form-container" class="glass-card rounded-[3.5rem] overflow-hidden shadow-2xl transition-all duration-700">
             <form id="registrationForm" class="grid lg:grid-cols-5">
-                <!-- Registration Fields -->
                 <div class="lg:col-span-3 p-8 sm:p-16">
                     <div class="flex items-center gap-5 mb-12">
                         <div class="w-14 h-14 gold-bg text-black rounded-2xl flex items-center justify-center shadow-[0_10px_30px_rgba(212,175,55,0.3)]">
@@ -163,7 +190,7 @@
                         </div>
                         <div>
                             <h2 class="text-2xl md:text-4xl font-black text-white uppercase italic tracking-tighter">Registration</h2>
-                            <p class="text-[10px] text-[#D4AF37] font-black uppercase tracking-[0.3em]">Official Candidate Enrollment</p>
+                            <p class="text-[10px] text-[#D4AF37] font-black uppercase tracking-[0.3em]">Master Sheet Enrollment</p>
                         </div>
                     </div>
                     
@@ -191,10 +218,9 @@
                     </div>
                 </div>
 
-                <!-- Payment Sidebar -->
                 <div class="lg:col-span-2 bg-neutral-900/40 p-8 sm:p-16 border-t lg:border-t-0 lg:border-l border-white/5 flex flex-col justify-center text-center">
                     <div class="mb-12">
-                        <div class="bg-white p-5 rounded-[2.5rem] inline-block shadow-2xl transform hover:scale-105 transition-transform duration-500">
+                        <div class="bg-white p-5 rounded-[2.5rem] inline-block shadow-2xl transition-transform hover:scale-105">
                             <img src="payment-qr.jpg" alt="Payment QR" class="w-44 h-44 md:w-60 md:h-60 object-contain rounded-xl">
                         </div>
                         <p class="text-[11px] text-gray-500 uppercase tracking-[0.3em] font-black mt-8 italic">Scan & Pay ₹50</p>
@@ -217,20 +243,17 @@
         <!-- Success Message -->
         <div id="success-container" class="hidden text-center py-20 glass-card rounded-[4rem] p-8 md:p-20 border-[#D4AF37]/40 max-w-3xl mx-auto animate-in fade-in zoom-in duration-700">
             <div class="w-28 h-28 gold-bg rounded-[2.5rem] flex items-center justify-center mx-auto mb-10 shadow-[0_30px_60px_rgba(212,175,55,0.3)] rotate-12">
-                <i data-lucide="check" class="text-black w-14 h-14 stroke-[4px]"></i>
+                <i data-lucide="database" class="text-black w-14 h-14 stroke-[4px]"></i>
             </div>
-            <h2 class="text-4xl md:text-7xl font-black mb-6 text-white italic uppercase tracking-tighter">DATA <br><span class="gold-gradient">RECORDED</span></h2>
-            <p class="text-gray-400 text-sm md:text-xl font-medium max-w-md mx-auto leading-relaxed text-center">Your registration information has been successfully saved to our master sheet.</p>
+            <h2 class="text-4xl md:text-7xl font-black mb-6 text-white italic uppercase tracking-tighter leading-none">DATA <br><span class="gold-gradient">RECORDED</span></h2>
+            <p class="text-gray-400 text-sm md:text-xl font-medium max-w-md mx-auto leading-relaxed text-center mb-10">Your registration information has been successfully saved to our master sheet.</p>
             
-            <div class="mt-12">
-                <a href="https://chat.whatsapp.com/I5GkzrYLAHD9ld45ooU2P8" target="_blank" class="inline-flex items-center gap-3 text-[#D4AF37] font-black uppercase tracking-widest text-xs border-b border-[#D4AF37]/30 pb-1 hover:opacity-70 transition">
-                    Join Official Event Group <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
-                </a>
-            </div>
+            <a href="https://chat.whatsapp.com/I5GkzrYLAHD9ld45ooU2P8" target="_blank" class="inline-flex items-center gap-3 text-[#D4AF37] font-black uppercase tracking-widest text-xs border-b border-[#D4AF37]/30 pb-1 hover:opacity-70 transition">
+                Join Official Event Group <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-[#050505] py-24 px-6 border-t border-white/5 relative z-10">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-16 text-center">
             <div class="space-y-6">
@@ -250,20 +273,29 @@
                 <p class="text-[12px] text-gray-500 uppercase font-black tracking-[0.6em]">Electrical Dept. KBTCOE</p>
             </div>
         </div>
-        <p class="text-center text-[10px] text-gray-700 mt-20 uppercase font-bold tracking-[1em] opacity-40">EESA KBTCOE NASHIK</p>
     </footer>
 
     <script>
         lucide.createIcons();
 
-        // --- CONNECTED TO YOUR GOOGLE SHEET ---
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbysrJ9HmxId9NHUeo4ijcYFpuVG1oMCPGnBNXuRdYJ5IHaUOAOTRM5G_a4lqumz2kPLmw/exec';
+        // Loading Screen Handler
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 800);
+            }, 1000);
+        });
+
+        // Config
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwMuuVXT10IjBUbCbNGbOG0XKBGPmjRT1xZOUPXb7twPegg--0TGDOJ7PJmXL3qbjp-/exec';
+        // Technical success sound
+        const successSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3');
 
         const form = document.getElementById('registrationForm');
         const submitBtn = document.getElementById('submitBtn');
         const utrField = document.getElementById('utr_field');
 
-        // Form Validation Logic
         function validate() {
             const formData = new FormData(form);
             let isFull = true;
@@ -288,20 +320,17 @@
         form.querySelectorAll('input').forEach(i => i.addEventListener('input', validate));
         utrField.addEventListener('input', (e) => e.target.value = e.target.value.replace(/[^0-9]/g, ''));
 
-        // Handle the Submit Action
         form.addEventListener('submit', e => {
             e.preventDefault();
             if (submitBtn.disabled) return;
 
-            submitBtn.innerHTML = `<span class="animate-pulse">STORING DATA...</span>`;
+            submitBtn.innerHTML = `<span class="animate-pulse">SYNCHRONIZING...</span>`;
             submitBtn.disabled = true;
 
-            fetch(scriptURL, { 
-                method: 'POST', 
-                body: new FormData(form),
-                mode: 'no-cors' 
-            })
+            fetch(scriptURL, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
             .then(() => {
+                // Play sound and show success
+                successSound.play().catch(err => console.log("Audio play blocked by browser"));
                 document.getElementById('form-container').classList.add('hidden');
                 document.getElementById('success-container').classList.remove('hidden');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -315,4 +344,3 @@
     </script>
 </body>
 </html>
-
