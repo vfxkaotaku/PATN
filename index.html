@@ -272,6 +272,7 @@
                 <p class="text-[12px] text-gray-500 uppercase font-black tracking-[0.6em]">Electrical Dept. KBTCOE</p>
             </div>
         </div>
+        <p class="text-center text-[10px] text-gray-700 mt-20 uppercase font-bold tracking-[1em] opacity-40">EESA KBTCOE NASHIK</p>
     </footer>
 
     <script>
@@ -286,9 +287,9 @@
             }, 3000); // 3-second delay
         });
 
-        // Config
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwMuuVXT10IjBUbCbNGbOG0XKBGPmjRT1xZOUPXb7twPegg--0TGDOJ7PJmXL3qbjp-/exec';
-        // Technical success sound
+        // Config - UPDATED WITH YOUR NEW API URL
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbysrJ9HmxId9NHUeo4ijcYFpuVG1oMCPGnBNXuRdYJ5IHaUOAOTRM5G_a4lqumz2kPLmw/exec';
+        // Success sound chime
         const successSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3');
 
         const form = document.getElementById('registrationForm');
@@ -328,8 +329,7 @@
 
             fetch(scriptURL, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
             .then(() => {
-                // Play sound and show success
-                successSound.play().catch(err => console.log("Audio play blocked by browser"));
+                successSound.play().catch(err => console.log("Audio play blocked"));
                 document.getElementById('form-container').classList.add('hidden');
                 document.getElementById('success-container').classList.remove('hidden');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -343,4 +343,3 @@
     </script>
 </body>
 </html>
-
