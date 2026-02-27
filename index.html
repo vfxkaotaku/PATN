@@ -17,7 +17,7 @@
             position: relative;
         }
 
-        /* --- BACKGROUND ANIMATIONS --- */
+        /* Ambient Background Grid */
         .bg-grid-animate {
             position: fixed;
             top: 0;
@@ -53,7 +53,6 @@
             100% { transform: translate(10vw, 10vh); }
         }
 
-        /* --- THEME STYLING --- */
         .gold-gradient {
             background: linear-gradient(135deg, #D4AF37 0%, #F1D37E 50%, #B8860B 100%);
             -webkit-background-clip: text;
@@ -95,20 +94,18 @@
         html { scroll-behavior: smooth; }
 
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #080808; }
         ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }
     </style>
 </head>
 <body class="min-h-screen selection:bg-[#D4AF37]/30">
 
-    <!-- Ambient Background -->
     <div class="bg-grid-animate"></div>
     <div class="floating-blob" style="top: -100px; left: -100px;"></div>
     <div class="floating-blob" style="bottom: -100px; right: -100px; animation-delay: -5s;"></div>
 
-    <!-- Header Section -->
-    <header class="pt-8 pb-16 px-6 relative overflow-hidden">
-        <div class="max-w-6xl mx-auto flex justify-end items-center mb-16 relative z-10">
+    <!-- Header -->
+    <header class="pt-8 pb-16 px-6 relative z-10">
+        <div class="max-w-6xl mx-auto flex justify-end items-center mb-16">
             <a href="https://instagram.com/eesa_kbtcoe" target="_blank" 
                class="group px-4 py-1.5 border-2 border-[#D4AF37]/30 rounded-xl bg-[#D4AF37]/5 shadow-[0_0_20px_rgba(212,175,55,0.1)] hover:border-[#D4AF37] transition-all duration-300 flex items-center gap-2">
                 <span class="text-base md:text-2xl font-black tracking-tighter text-white italic leading-none uppercase">EESA</span>
@@ -116,7 +113,7 @@
             </a>
         </div>
 
-        <div class="text-center relative z-10 max-w-6xl mx-auto px-4">
+        <div class="text-center max-w-6xl mx-auto px-4">
             <div class="inline-flex items-center gap-3 mb-6">
                 <div class="h-[1px] w-4 md:w-8 bg-[#D4AF37]/40"></div>
                 <p class="text-[8px] md:text-[10px] text-[#D4AF37] font-black tracking-[0.5em] uppercase opacity-90">Presented By EESA</p>
@@ -137,44 +134,42 @@
 
     <!-- Metrics Bar -->
     <section class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 px-4 sm:px-6 -mt-8 relative z-20">
-        <div class="glass-card p-6 rounded-[2rem] text-center flex flex-col items-center justify-center group">
+        <div class="glass-card p-6 rounded-[2rem] text-center flex flex-col items-center justify-center">
             <i data-lucide="calendar" class="w-5 h-5 mb-2 text-[#D4AF37]"></i>
             <p class="text-[10px] text-gray-500 font-black uppercase tracking-widest">Date</p>
             <p class="text-sm md:text-lg font-black uppercase text-white">07 March</p>
         </div>
-        <div class="glass-card p-6 rounded-[2rem] text-center flex flex-col items-center justify-center group">
+        <div class="glass-card p-6 rounded-[2rem] text-center flex flex-col items-center justify-center">
             <i data-lucide="award" class="w-5 h-5 mb-2 text-[#D4AF37]"></i>
             <p class="text-[10px] text-gray-500 font-black uppercase tracking-widest">Entry Fee</p>
             <p class="text-sm md:text-lg font-black uppercase text-white">₹ 50/-</p>
         </div>
         <div class="glass-card p-6 rounded-[2rem] text-center col-span-2 shadow-2xl flex flex-col items-center justify-center">
             <i data-lucide="map-pin" class="w-5 h-5 mb-2 text-[#D4AF37]"></i>
-            <p class="text-[10px] text-gray-500 font-black uppercase tracking-widest">Venue</p>
-            <p class="text-[10px] md:text-xs font-black uppercase text-white text-center">C-Building 4th floor, Electrical Department</p>
+            <p class="text-[10px] text-gray-500 font-black uppercase tracking-widest">Official Venue</p>
+            <p class="text-[10px] md:text-xs font-black uppercase text-white leading-tight">C-Building 4th floor, Electrical Department</p>
         </div>
     </section>
 
-    <!-- Main Form Area -->
-    <main class="max-w-6xl mx-auto py-12 md:py-24 px-4 sm:px-6 relative">
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto py-12 md:py-24 px-4 sm:px-6 relative z-10">
         <div id="form-container" class="glass-card rounded-[3.5rem] overflow-hidden shadow-2xl transition-all duration-700">
-            <!-- Form ID matches the JavaScript logic -->
             <form id="registrationForm" class="grid lg:grid-cols-5">
                 <!-- Registration Fields -->
                 <div class="lg:col-span-3 p-8 sm:p-16">
                     <div class="flex items-center gap-5 mb-12">
-                        <div class="w-14 h-14 gold-bg text-black rounded-2xl flex items-center justify-center">
-                            <i data-lucide="user-plus" class="w-7 h-7"></i>
+                        <div class="w-14 h-14 gold-bg text-black rounded-2xl flex items-center justify-center shadow-[0_10px_30px_rgba(212,175,55,0.3)]">
+                            <i data-lucide="zap" class="w-7 h-7"></i>
                         </div>
                         <div>
                             <h2 class="text-2xl md:text-4xl font-black text-white uppercase italic tracking-tighter">Registration</h2>
-                            <p class="text-[10px] text-[#D4AF37] font-black uppercase tracking-[0.3em]">Private Master List Entry</p>
+                            <p class="text-[10px] text-[#D4AF37] font-black uppercase tracking-[0.3em]">Official Candidate Enrollment</p>
                         </div>
                     </div>
                     
                     <div class="space-y-8">
                         <div class="space-y-3">
                             <label class="text-[11px] font-black text-gray-500 uppercase ml-1 tracking-[0.2em]">Student Full Name</label>
-                            <!-- 'name' attributes must match Google Sheet headers exactly -->
                             <input type="text" name="fullName" placeholder="Enter Full Name" required class="input-field w-full px-6 py-5 rounded-[1.5rem] text-white text-base">
                         </div>
                         
@@ -190,7 +185,7 @@
                         </div>
 
                         <div class="space-y-3">
-                            <label class="text-[11px] font-black text-gray-500 uppercase ml-1 tracking-[0.2em]">Presentation Topic Title</label>
+                            <label class="text-[11px] font-black text-gray-500 uppercase ml-1 tracking-[0.2em]">Presentation Topic</label>
                             <input type="text" name="topic" placeholder="Your technical title" required class="input-field w-full px-6 py-5 rounded-[1.5rem] text-white text-base">
                         </div>
                     </div>
@@ -199,7 +194,7 @@
                 <!-- Payment Sidebar -->
                 <div class="lg:col-span-2 bg-neutral-900/40 p-8 sm:p-16 border-t lg:border-t-0 lg:border-l border-white/5 flex flex-col justify-center text-center">
                     <div class="mb-12">
-                        <div class="bg-white p-5 rounded-[2.5rem] inline-block shadow-2xl">
+                        <div class="bg-white p-5 rounded-[2.5rem] inline-block shadow-2xl transform hover:scale-105 transition-transform duration-500">
                             <img src="payment-qr.jpg" alt="Payment QR" class="w-44 h-44 md:w-60 md:h-60 object-contain rounded-xl">
                         </div>
                         <p class="text-[11px] text-gray-500 uppercase tracking-[0.3em] font-black mt-8 italic">Scan & Pay ₹50</p>
@@ -219,13 +214,13 @@
             </form>
         </div>
 
-        <!-- Success Screen -->
-        <div id="success-container" class="hidden text-center py-20 glass-card rounded-[4rem] p-8 md:p-20 border-[#D4AF37]/40 max-w-3xl mx-auto animate-in fade-in zoom-in">
+        <!-- Success Message -->
+        <div id="success-container" class="hidden text-center py-20 glass-card rounded-[4rem] p-8 md:p-20 border-[#D4AF37]/40 max-w-3xl mx-auto animate-in fade-in zoom-in duration-700">
             <div class="w-28 h-28 gold-bg rounded-[2.5rem] flex items-center justify-center mx-auto mb-10 shadow-[0_30px_60px_rgba(212,175,55,0.3)] rotate-12">
-                <i data-lucide="database" class="text-black w-14 h-14 stroke-[4px]"></i>
+                <i data-lucide="check" class="text-black w-14 h-14 stroke-[4px]"></i>
             </div>
             <h2 class="text-4xl md:text-7xl font-black mb-6 text-white italic uppercase tracking-tighter">DATA <br><span class="gold-gradient">RECORDED</span></h2>
-            <p class="text-gray-400 text-sm md:text-xl font-medium max-w-md mx-auto leading-relaxed">Your registration information has been successfully saved to our private master sheet.</p>
+            <p class="text-gray-400 text-sm md:text-xl font-medium max-w-md mx-auto leading-relaxed text-center">Your registration information has been successfully saved to our master sheet.</p>
             
             <div class="mt-12">
                 <a href="https://chat.whatsapp.com/I5GkzrYLAHD9ld45ooU2P8" target="_blank" class="inline-flex items-center gap-3 text-[#D4AF37] font-black uppercase tracking-widest text-xs border-b border-[#D4AF37]/30 pb-1 hover:opacity-70 transition">
@@ -236,23 +231,23 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-[#050505] py-24 px-6 border-t border-white/5">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-16">
-            <div class="text-center md:text-left space-y-6">
-                <h4 class="text-gray-600 text-[11px] font-black uppercase tracking-[0.5em]">Organizers Contact</h4>
-                <div class="flex flex-col gap-4">
+    <footer class="bg-[#050505] py-24 px-6 border-t border-white/5 relative z-10">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-16 text-center">
+            <div class="space-y-6">
+                <h4 class="text-gray-600 text-[11px] font-black uppercase tracking-[0.5em]">Board of Organizers</h4>
+                <div class="space-y-3">
                     <p class="text-sm text-white font-bold">Parth Ahirrao: <span class="text-[#D4AF37] font-mono ml-2">8087872903</span></p>
                     <p class="text-sm text-white font-bold">Ayush Nikam: <span class="text-[#D4AF37] font-mono ml-4">8856828331</span></p>
                 </div>
             </div>
             
-            <div class="text-center flex flex-col items-center space-y-4">
+            <div class="flex flex-col items-center space-y-4">
                 <div class="flex items-center gap-4">
                     <div class="h-[2px] w-8 md:w-12 bg-[#D4AF37]/40"></div>
                     <h2 class="font-black text-5xl tracking-tighter italic text-white uppercase leading-none">EESA</h2>
                     <div class="h-[2px] w-8 md:w-12 bg-[#D4AF37]/40"></div>
                 </div>
-                <p class="text-[12px] text-gray-500 uppercase font-black tracking-[0.6em]">Electrical Dept.</p>
+                <p class="text-[12px] text-gray-500 uppercase font-black tracking-[0.6em]">Electrical Dept. KBTCOE</p>
             </div>
         </div>
         <p class="text-center text-[10px] text-gray-700 mt-20 uppercase font-bold tracking-[1em] opacity-40">EESA KBTCOE NASHIK</p>
@@ -261,77 +256,59 @@
     <script>
         lucide.createIcons();
 
-        // --- GOOGLE SHEETS CONFIGURATION ---
-        // Step 1: Follow the Setup Guide to get your URL
-        // Step 2: Replace the string below with your Web App URL
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwMuuVXT10IjBUbCbNGb0G0xKBGPmjRT1xZOUPXb7twPegg--0TGD0J7PJmXL3qbJp-/exec';
+        // --- CONNECTED TO YOUR GOOGLE SHEET ---
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwMuuVXT10IjBUbCbNGbOG0XKBGPmjRT1xZOUPXb7twPegg--0TGDOJ7PJmXL3qbjp-/exec';
 
         const form = document.getElementById('registrationForm');
         const submitBtn = document.getElementById('submitBtn');
         const utrField = document.getElementById('utr_field');
 
-        function validateForm() {
+        // Form Validation Logic
+        function validate() {
             const formData = new FormData(form);
-            let isComplete = true;
-            
-            // Check all text inputs
+            let isFull = true;
             for (let [key, value] of formData.entries()) {
-                if (!value.trim()) {
-                    isComplete = false;
-                    break;
-                }
+                if (!value.trim()) { isFull = false; break; }
             }
-
-            // Specific check for UTR length
-            const utrValue = utrField.value.trim();
-            
-            if (!isComplete) {
+            if (!isFull) {
                 submitBtn.innerText = "FILL ALL FIELDS";
                 submitBtn.disabled = true;
                 submitBtn.classList.add('disabled-btn');
-            } else if (utrValue.length < 10) {
+            } else if (utrField.value.trim().length < 10) {
                 submitBtn.innerText = "ENTER VALID UTR";
                 submitBtn.disabled = true;
                 submitBtn.classList.add('disabled-btn');
             } else {
-                submitBtn.innerText = "SUBMIT REGISTRATION";
+                submitBtn.innerText = "REGISTER NOW";
                 submitBtn.disabled = false;
                 submitBtn.classList.remove('disabled-btn');
             }
         }
 
-        // Add listeners to every input in the form
-        form.querySelectorAll('input').forEach(input => {
-            input.addEventListener('input', validateForm);
-        });
+        form.querySelectorAll('input').forEach(i => i.addEventListener('input', validate));
+        utrField.addEventListener('input', (e) => e.target.value = e.target.value.replace(/[^0-9]/g, ''));
 
-        // Numeric-only cleaning for UTR
-        utrField.addEventListener('input', (e) => {
-            e.target.value = e.target.value.replace(/[^0-9]/g, '');
-        });
-
-        // Handle the submission
+        // Handle the Submit Action
         form.addEventListener('submit', e => {
             e.preventDefault();
             if (submitBtn.disabled) return;
 
-            submitBtn.innerHTML = `<span class="animate-pulse">SAVING TO SHEET...</span>`;
+            submitBtn.innerHTML = `<span class="animate-pulse">STORING DATA...</span>`;
             submitBtn.disabled = true;
 
             fetch(scriptURL, { 
                 method: 'POST', 
                 body: new FormData(form),
-                mode: 'no-cors' // Required for Google Scripts
+                mode: 'no-cors' 
             })
-            .then(response => {
-                console.log('Success!', response);
+            .then(() => {
                 document.getElementById('form-container').classList.add('hidden');
                 document.getElementById('success-container').classList.remove('hidden');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             })
             .catch(error => {
                 console.error('Error!', error.message);
-                submitBtn.innerHTML = "ERROR - RETRY";
+                submitBtn.innerHTML = "ERROR - TRY AGAIN";
                 submitBtn.disabled = false;
             });
         });
