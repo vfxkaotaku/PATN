@@ -86,6 +86,7 @@
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .input-field {
@@ -161,20 +162,20 @@
 
     <!-- Metrics Bar -->
     <section class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 px-4 sm:px-6 -mt-8 relative z-20">
-        <div class="glass-card p-6 rounded-[2rem] text-center flex flex-col items-center justify-center">
+        <div class="glass-card p-6 rounded-[2rem] text-center flex flex-col items-center justify-center group">
             <i data-lucide="calendar" class="w-5 h-5 mb-2 text-[#D4AF37]"></i>
             <p class="text-[10px] text-gray-500 font-black uppercase tracking-widest">Date</p>
             <p class="text-sm md:text-lg font-black uppercase text-white">07 March</p>
         </div>
-        <div class="glass-card p-6 rounded-[2rem] text-center flex flex-col items-center justify-center">
+        <div class="glass-card p-6 rounded-[2rem] text-center flex flex-col items-center justify-center group">
             <i data-lucide="award" class="w-5 h-5 mb-2 text-[#D4AF37]"></i>
             <p class="text-[10px] text-gray-500 font-black uppercase tracking-widest">Entry Fee</p>
             <p class="text-sm md:text-lg font-black uppercase text-white">₹ 50/-</p>
         </div>
-        <div class="glass-card p-6 rounded-[2rem] text-center col-span-2 shadow-2xl flex flex-col items-center justify-center">
+        <div class="glass-card p-6 rounded-[2rem] text-center col-span-2 shadow-2xl flex flex-col items-center justify-center group">
             <i data-lucide="map-pin" class="w-5 h-5 mb-2 text-[#D4AF37]"></i>
             <p class="text-[10px] text-gray-500 font-black uppercase tracking-widest">Official Venue</p>
-            <p class="text-[10px] md:text-xs font-black uppercase text-white leading-tight">C-Building, 4th floor, Electrical Department</p>
+            <p class="text-[10px] md:text-xs font-black uppercase text-white leading-tight text-center">C-Building 4th floor, Electrical Department</p>
         </div>
     </section>
 
@@ -201,7 +202,7 @@
                         
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
                             <div class="space-y-3">
-                                <label class="text-[11px] font-black text-gray-500 uppercase ml-1 tracking-[0.2em]">Department, Division, Year</label>
+                                <label class="text-[11px] font-black text-gray-500 uppercase ml-1 tracking-[0.2em]">Dept & Year</label>
                                 <input type="text" name="department" placeholder="e.g. Electrical BE" required class="input-field w-full px-6 py-5 rounded-[1.5rem] text-white text-base">
                             </div>
                             <div class="space-y-3">
@@ -223,6 +224,8 @@
                             <img src="payment-qr.jpg" alt="Payment QR" class="w-44 h-44 md:w-60 md:h-60 object-contain rounded-xl">
                         </div>
                         <p class="text-[11px] text-gray-500 uppercase tracking-[0.3em] font-black mt-8 italic">Scan & Pay ₹50</p>
+                        <!-- Added UPI ID text -->
+                        <p class="text-[10px] text-[#D4AF37] font-mono mt-3 tracking-widest bg-white/5 py-1 px-3 rounded-full inline-block select-all">9404458295@ybl</p>
                     </div>
 
                     <div class="space-y-8">
@@ -259,7 +262,7 @@
                 <h4 class="text-gray-600 text-[11px] font-black uppercase tracking-[0.5em]">Board of Organizers</h4>
                 <div class="space-y-3">
                     <p class="text-sm text-white font-bold">Parth Ahirrao: <span class="text-[#D4AF37] font-mono ml-2">8087872903</span></p>
-                    <p class="text-sm text-white font-bold">Ayush Nikam: <span class="text-[#D4AF37] font-mono ml-4">8767705165</span></p>
+                    <p class="text-sm text-white font-bold">Ayush Nikam: <span class="text-[#D4AF37] font-mono ml-4">8856828331</span></p>
                 </div>
             </div>
             
@@ -287,9 +290,9 @@
             }, 3000); // 3-second delay
         });
 
-        // Config - UPDATED WITH YOUR NEW API URL
+        // Config - Your API URL preserved
         const scriptURL = 'https://script.google.com/macros/s/AKfycbysrJ9HmxId9NHUeo4ijcYFpuVG1oMCPGnBNXuRdYJ5IHaUOAOTRM5G_a4lqumz2kPLmw/exec';
-        // Success sound chime
+        // Success sound chime preserved
         const successSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3');
 
         const form = document.getElementById('registrationForm');
@@ -343,4 +346,3 @@
     </script>
 </body>
 </html>
-
